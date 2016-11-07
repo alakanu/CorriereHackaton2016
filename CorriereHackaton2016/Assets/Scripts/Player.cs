@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
-using System.Collections;
-using System;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -14,6 +13,7 @@ public class Player : MonoBehaviour {
     bool looking_right = false;
 
     public float m_speed = 10f;
+    public UnityEvent m_onPlayerDeath;
 
 	// Use this for initialization
 	void Start ()
@@ -69,7 +69,7 @@ public class Player : MonoBehaviour {
         if (m_vertical < 0)
             m_animator.SetInteger("dir", 3);
 
-        if (m_rigid2d.velocity != Vector2.zero)
+        if (m_rigid2d.velocity == Vector2.zero)
             m_animator.SetBool("moving", false);
         else
             m_animator.SetBool("moving", true);
@@ -86,6 +86,7 @@ public class Player : MonoBehaviour {
 
         if (collision.collider.gameObject.CompareTag("Enemy"))
         {
+            m_onPlayerDeath.Invoke();
             Debug.Log("Colpito");
         }
     }
