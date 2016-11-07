@@ -3,8 +3,12 @@ using System.Collections;
 
 public class Vaccinated : MonoBehaviour {
 
+    const int min_move_timer = 1;
+    const int max_move_timer = 5;
+
     Transform tr;
     Animator anim;
+    Rigidbody2D rigid2d;
 
     public float m_speed = 20f;
     Vector3 direction;
@@ -14,40 +18,24 @@ public class Vaccinated : MonoBehaviour {
         
         tr = GetComponent<Transform>() as Transform;
         anim = GetComponent<Animator>() as Animator;
-        direction = RandomDir();
+        rigid2d = GetComponent<Rigidbody2D>() as Rigidbody2D;
 	}
 
     void OnEnable()
     {
         StartCoroutine(ChangeDirection());
     }
-
 	
     IEnumerator ChangeDirection()
     {
         direction = RandomDir();
-        yield return new WaitForSeconds(Random.Range(1,5));
+        yield return new WaitForSeconds(Random.Range(min_move_timer, max_move_timer));
         StartCoroutine(ChangeDirection());
     }
 
-    void Update()
-    {
-        //RandomDirProb();
-    }
-
-	// Update is called once per frame
 	void FixedUpdate () {
-        //RandomDir();
-        tr.position = tr.position + direction * m_speed * Time.deltaTime;
+        rigid2d.velocity = direction * m_speed;
 	}
-
-    void RandomDirProb()
-    {
-        if (Random.value > 0.80f)
-        {
-            direction = RandomDir();
-        }
-    }
 
     Vector3 RandomDir()
     {
