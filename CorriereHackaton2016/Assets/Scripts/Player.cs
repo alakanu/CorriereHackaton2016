@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -8,8 +9,9 @@ public class Player : MonoBehaviour {
     float m_horizontal;
     float m_vertical;
     Rigidbody2D m_rigid2d;
-    Animator m_anim;
+    Animator m_animator;
     Transform tr;
+    bool looking_right = false;
 
     public float m_speed = 10f;
 
@@ -18,13 +20,59 @@ public class Player : MonoBehaviour {
     {
         tr = GetComponent<Transform>();
         m_rigid2d = gameObject.GetComponent<Rigidbody2D>();
-        m_anim = GetComponent<Animator>();
+        m_animator = GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
         m_horizontal = Input.GetAxis("Horizontal");
         m_vertical = Input.GetAxis("Vertical");
+
+        AnimateCharacter();
+    }
+
+    private void AnimateCharacter()
+    {
+        UpdateAnimator();
+        FlipPlayer();
+        
+    }
+
+    private void FlipPlayer()
+    {
+        Vector3 temp = tr.localScale;
+
+        if (m_horizontal < 0 && looking_right)
+        {
+            looking_right = false;
+            temp = new Vector3(-1,1,1);
+        }
+        
+        if(m_horizontal > 0 && !looking_right)
+        {
+            looking_right = true;
+            temp = Vector3.one;
+        }
+        tr.localScale = temp;
+    }
+
+    private void UpdateAnimator()
+    {
+        m_animator.SetInteger("dir", 0);
+
+        if (m_horizontal != 0)
+            m_animator.SetInteger("dir", 1);
+
+        if (m_vertical > 0)
+            m_animator.SetInteger("dir", 2);
+
+        if (m_vertical < 0)
+            m_animator.SetInteger("dir", 3);
+
+        if (m_rigid2d.velocity != Vector2.zero)
+            m_animator.SetBool("moving", false);
+        else
+            m_animator.SetBool("moving", true);
     }
 
     void FixedUpdate()
