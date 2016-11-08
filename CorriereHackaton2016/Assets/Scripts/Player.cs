@@ -75,7 +75,7 @@ public class Player : MonoBehaviour {
     void FixedUpdate()
     {
         if (!m_dying)
-            m_rigid2d.velocity = tr.right * m_horizontal * m_speed + tr.up * m_vertical * m_speed;
+            m_rigid2d.velocity = tr.right * m_horizontal * m_speed * Time.fixedDeltaTime + tr.up * m_vertical * m_speed * Time.fixedDeltaTime;
         else
             m_rigid2d.velocity = Vector3.zero;
     }

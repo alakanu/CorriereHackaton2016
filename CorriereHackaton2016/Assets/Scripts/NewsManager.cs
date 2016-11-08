@@ -26,6 +26,11 @@ public class NewsManager : MonoBehaviour {
         //m_startPosition = m_targetTr.position;
         GameManager.NewsEvent += UpdateNews;
     }
+
+    void OnDestroy()
+    {
+        GameManager.NewsEvent -= UpdateNews;
+    }
 	
 	// Update is called once per frame
 	void Update ()

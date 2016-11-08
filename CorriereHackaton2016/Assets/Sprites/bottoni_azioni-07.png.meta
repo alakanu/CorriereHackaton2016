@@ -1,9 +1,12 @@
 fileFormatVersion: 2
-guid: 8b268d84926453941ae2e744972d1b1d
-timeCreated: 1478609428
+guid: 962340fa5e49e9341a763f1c09164840
+timeCreated: 1478611570
 licenseType: Free
 TextureImporter:
-  fileIDToRecycleName: {}
+  fileIDToRecycleName:
+    21300000: bottoni_azioni-07_0
+    21300002: bottoni_azioni-07_1
+    21300004: bottoni_azioni-07_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -38,7 +41,7 @@ TextureImporter:
   rGBM: 0
   compressionQuality: 50
   allowsAlphaSplitting: 0
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -51,7 +54,46 @@ TextureImporter:
   buildTargetSettings: []
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: bottoni_azioni-07_0
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 266
+        width: 361
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bottoni_azioni-07_1
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 144
+        width: 361
+        height: 90
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: bottoni_azioni-07_2
+      rect:
+        serializedVersion: 2
+        x: 31
+        y: 31
+        width: 361
+        height: 89
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
     outline: []
   spritePackingTag: 
   userData: 
