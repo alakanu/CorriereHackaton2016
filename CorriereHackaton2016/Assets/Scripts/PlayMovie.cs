@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class PlayMovie : MonoBehaviour {
 
+    public GameObject Tutorial;
     public MovieTexture movie;
 
 	// Use this for initialization
@@ -17,7 +18,8 @@ public class PlayMovie : MonoBehaviour {
 	void Update () {
         if(!movie.isPlaying)
         {
-            SceneManager.LoadScene(1);
+            Tutorial.SetActive(true);
+            gameObject.SetActive(false);
         }
 	
 	}
