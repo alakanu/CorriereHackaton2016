@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StepVirus : BasicVirus {
+public class TriangleVirus : BasicVirus {
 
     public float HoldTime;
     public float Amplitude;
@@ -14,7 +14,7 @@ public class StepVirus : BasicVirus {
 
     protected bool changeFront;
     protected bool vertical;
-
+    
     public override Vector3 Direction
     {
         get
@@ -43,26 +43,26 @@ public class StepVirus : BasicVirus {
         changeSpeed *= -1;
         changeFront = true;
     }
-
+    
     protected override void Move()
     {
-        Vector3 forwardIncrement = changeFront ? Vector3.zero : direction * Speed * Time.fixedDeltaTime;
+        Vector3 forwardIncrement = direction * Speed * Time.fixedDeltaTime;
         center += forwardIncrement;
-
+        
         if (vertical)
         {
-            if (changeFront)
+            if(changeFront)
             {
-                Vector2 nextPos = transform.position + transform.right * changeSpeed * Time.fixedDeltaTime;
-                if (Vector2.Distance(nextPos, center) >= span)
+                Vector2 nextPos = transform.position + forwardIncrement + transform.right * changeSpeed * Time.fixedDeltaTime;
+                if(Vector2.Distance(nextPos, center) >= span)
                 {
                     changeFront = false;
                     nextPos = center + transform.right * span * Mathf.Sign(changeSpeed);
                     StartCoroutine(Hold());
                 }
-
+                
                 rb2D.MovePosition(nextPos);
-
+                
             }
             else
             {
@@ -73,8 +73,8 @@ public class StepVirus : BasicVirus {
         {
             if (changeFront)
             {
-                Vector2 nextPos = transform.position + transform.up * changeSpeed * Time.fixedDeltaTime;
-                if (Vector2.Distance(nextPos, center) >= span)
+                Vector2 nextPos = transform.position + forwardIncrement + transform.up * changeSpeed * Time.fixedDeltaTime;
+                if (Vector2.Distance(nextPos,center) >= span)
                 {
                     changeFront = false;
                     nextPos = center + transform.up * span * Mathf.Sign(changeSpeed);
@@ -87,8 +87,8 @@ public class StepVirus : BasicVirus {
             {
                 rb2D.MovePosition(transform.position + forwardIncrement);
             }
-
+            
         }
-
+        
     }
 }
