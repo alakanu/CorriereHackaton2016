@@ -72,16 +72,28 @@ public class Vaccinated : MonoBehaviour
         return d;
     }
 
+    void Bounce()
+    {
+        direction.x = -1 * direction.x;
+        direction.y = -1 * direction.y;
+        SetAnimator();
+        StopAllCoroutines();
+        StartCoroutine(ChangeDirection());
+    }
+
+    void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.collider.CompareTag("Player"))
+        {
+            Bounce();
+        }
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.CompareTag("Border"))
+        if (other.CompareTag("Border") )
         {
-            Debug.Log("Collider");
-            direction.x = -1 * direction.x;
-            direction.y = -1 * direction.y;
-            SetAnimator();
-            StopAllCoroutines();
-            StartCoroutine(ChangeDirection());
+            Bounce();
         }
     }
 
