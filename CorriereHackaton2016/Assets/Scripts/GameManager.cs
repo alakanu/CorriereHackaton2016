@@ -22,7 +22,8 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        Score.text = "" + Math.Round(time + Time.deltaTime,2);
+        time += Time.deltaTime;
+        Score.text = "" + Math.Round(time,2);
     }
 
     public void ResetTime()

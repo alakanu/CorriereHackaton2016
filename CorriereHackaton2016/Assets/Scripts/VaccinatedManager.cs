@@ -4,6 +4,7 @@ using System.Collections;
 public class VaccinatedManager : MonoBehaviour {
 
     public NotVaccinated m_novacc;
+    public GameObject m_container;
     public int m_change_number;
 
 	// Use this for initialization
@@ -13,11 +14,14 @@ public class VaccinatedManager : MonoBehaviour {
 
     void News()
     {
-        Vaccinated[] vacc = GameObject.FindObjectsOfType(typeof(Vaccinated)) as Vaccinated[];
+        int children_count = m_container.transform.childCount;
+
+
         for (int i=0; i< m_change_number; i++)
         {
-            Vector3 pos = vacc[i].gameObject.transform.position;
-            GameObject.Destroy(vacc[i].gameObject);
+            Transform trans = m_container.transform.GetChild(i);
+            Vector3 pos = trans.position;
+            GameObject.Destroy(trans.gameObject);
             GameObject.Instantiate(m_novacc, pos, Quaternion.identity);
         }
     }
