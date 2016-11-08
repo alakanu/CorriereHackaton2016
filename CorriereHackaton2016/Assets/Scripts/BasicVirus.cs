@@ -5,6 +5,10 @@ public class BasicVirus : MonoBehaviour {
 
     public float Speed;
 
+    public VirusAnimators animCollection;
+
+    protected Animator animator;
+
     protected Vector3 direction;
 
     protected Rigidbody2D rb2D;
@@ -29,6 +33,8 @@ public class BasicVirus : MonoBehaviour {
 	
     protected void Awake()
     {
+        animator = GetComponent<Animator>();
+        animator.runtimeAnimatorController = animCollection.Animators[Random.Range(0, animCollection.Animators.Length)];
         rb2D = GetComponent<Rigidbody2D>();
         firstTouch = true;
     }
