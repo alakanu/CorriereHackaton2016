@@ -1,18 +1,15 @@
 fileFormatVersion: 2
-guid: 66985b17934d031459f1e020f93e9026
-timeCreated: 1478589566
+guid: cae69fb2aaf98294da12029e034547b7
+timeCreated: 1478592309
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: purple_1
-    21300002: black_1
-    21300004: blue_1
-    21300006: purple_2
-    21300008: black_2
-    21300010: blue_2
-    21300012: purple_3
-    21300014: black_3
-    21300016: blue_3
+    21300000: verde_1
+    21300002: rosso_1
+    21300004: hairypurple_1
+    21300006: verde_2
+    21300008: rosso_2
+    21300010: hairypurple_2
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -62,117 +59,78 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: purple_1
+      name: verde_1
       rect:
         serializedVersion: 2
-        x: 151
-        y: 323
-        width: 68
-        height: 161
+        x: 80
+        y: 281
+        width: 165
+        height: 125
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: black_1
+      name: rosso_1
       rect:
         serializedVersion: 2
-        x: 319
-        y: 371
-        width: 92
-        height: 92
+        x: 286
+        y: 288
+        width: 175
+        height: 125
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: blue_1
+      name: hairypurple_1
       rect:
         serializedVersion: 2
-        x: 522
-        y: 347
-        width: 91
-        height: 123
+        x: 538
+        y: 280
+        width: 201
+        height: 121
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: purple_2
+      name: verde_2
       rect:
         serializedVersion: 2
-        x: 146
-        y: 172
-        width: 76
-        height: 132
+        x: 93
+        y: 97
+        width: 149
+        height: 138
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: black_2
+      name: rosso_2
       rect:
         serializedVersion: 2
-        x: 322
-        y: 216
-        width: 86
-        height: 92
+        x: 292
+        y: 110
+        width: 167
+        height: 125
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: blue_2
+      name: hairypurple_2
       rect:
         serializedVersion: 2
-        x: 511
-        y: 199
-        width: 115
-        height: 123
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: purple_3
-      rect:
-        serializedVersion: 2
-        x: 140
-        y: 51
-        width: 89
-        height: 111
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: black_3
-      rect:
-        serializedVersion: 2
-        x: 314
-        y: 69
-        width: 102
-        height: 92
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      tessellationDetail: 0
-    - serializedVersion: 2
-      name: blue_3
-      rect:
-        serializedVersion: 2
-        x: 522
-        y: 54
-        width: 91
-        height: 123
+        x: 550
+        y: 86
+        width: 181
+        height: 145
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
