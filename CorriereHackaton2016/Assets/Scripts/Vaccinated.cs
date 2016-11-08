@@ -40,7 +40,7 @@ public class Vaccinated : MonoBehaviour
 
     void FixedUpdate()
     {
-        rigid2d.velocity = direction * m_speed;
+        rigid2d.velocity = direction * m_speed  * Time.fixedDeltaTime;
     }
 
     Vector3 RandomDir()
