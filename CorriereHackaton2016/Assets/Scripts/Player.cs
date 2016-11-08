@@ -30,9 +30,6 @@ public class Player : MonoBehaviour {
         m_vertical = Input.GetAxis("Vertical");
 
         AnimateCharacter();
-
-        if (Input.GetKeyUp(KeyCode.Space))
-            TurnOnSurprised();
     }
 
     private void AnimateCharacter()
@@ -90,6 +87,7 @@ public class Player : MonoBehaviour {
         if (collision.collider.gameObject.CompareTag("Enemy"))
         {
             m_onPlayerDeath.Invoke();
+            m_animator.SetBool("dying",true);
             Debug.Log("Colpito");
         }
     }
