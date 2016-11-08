@@ -3,6 +3,8 @@ using System.Collections;
 
 public class NotVaccinated : Vaccinated {
 
+    public GameObject m_death_pre;
+
     new void OnEnable()
     {
         StartCoroutine(Surprise());
@@ -37,6 +39,7 @@ public class NotVaccinated : Vaccinated {
     IEnumerator DestroyOnDeath()
     {
         yield return new WaitForSeconds(1);
+        GameObject.Instantiate(m_death_pre, tr.position, Quaternion.identity);
         Destroy(gameObject);
     }
 }
