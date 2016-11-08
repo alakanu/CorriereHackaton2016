@@ -3,11 +3,28 @@ using System.Collections;
 
 public class NotVaccinated : Vaccinated {
 
-    protected new void OnCollisionEnter2D(Collision2D other)
+    new void OnEnable()
     {
-        base.OnCollisionEnter2D(other);
-        if (other.collider.CompareTag("Enemy"))
+        StartCoroutine(Surprise());
+    }
+
+    IEnumerator Surprise()
+    {
+        anim.SetInteger("Direction", 0);
+        anim.SetBool("Surprised", true);
+        yield return new WaitForSeconds(1);
+        anim.SetBool("Surprised", false);
+        base.OnEnable();
+    }
+
+
+    protected new void OnTriggerEnter2D(Collider2D other)
+    {
+        base.OnTriggerEnter2D(other);
+        if (other.CompareTag("Enemy"))
         {
+            Debug.Log("Enemy");
+            GameObject.Destroy(other.gameObject);
             StopAllCoroutines();
             direction = new Vector3(0, 0, 0);
             anim.SetInteger("Direction", 0);
@@ -19,7 +36,7 @@ public class NotVaccinated : Vaccinated {
 
     IEnumerator DestroyOnDeath()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
         Destroy(gameObject);
     }
 }
