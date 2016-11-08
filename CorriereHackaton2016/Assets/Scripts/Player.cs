@@ -75,9 +75,9 @@ public class Player : MonoBehaviour {
                         + tr.up * m_vertical * m_speed;
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
+    void OnTriggerEnter2D(Collider2D other)
     {
-        if (collision.collider.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy"))
         {
             m_onPlayerDeath.Invoke();
             m_animator.SetBool("dying",true);
