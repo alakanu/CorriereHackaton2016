@@ -26,4 +26,9 @@ public class VaccinatedManager : MonoBehaviour {
         }
     }
 
+    void OnDestroy()
+    {
+        GameManager.NewsEvent -= News;
+    }
+
 }
