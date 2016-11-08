@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.Events;
+using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(Animator))]
@@ -29,6 +30,9 @@ public class Player : MonoBehaviour {
         m_vertical = Input.GetAxis("Vertical");
 
         AnimateCharacter();
+
+        if (Input.GetKeyUp(KeyCode.Space))
+            TurnOnSurprised();
     }
 
     private void AnimateCharacter()
@@ -83,11 +87,22 @@ public class Player : MonoBehaviour {
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-
         if (collision.collider.gameObject.CompareTag("Enemy"))
         {
             m_onPlayerDeath.Invoke();
             Debug.Log("Colpito");
         }
+    }
+
+    public void TurnOnSurprised()
+    {
+        m_animator.SetBool("surprised",true);
+        StartCoroutine(TurnOffSurprised());
+    }
+
+    IEnumerator TurnOffSurprised()
+    {
+        yield return new WaitForSeconds(0.5f);
+        m_animator.SetBool("surprised",false);
     }
 }
