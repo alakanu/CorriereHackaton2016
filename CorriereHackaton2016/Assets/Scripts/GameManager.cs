@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public delegate void OnNewsEvent();
     public static event OnNewsEvent NewsEvent;
 
+    public int m_news_time = 30;
+
     void Start()
     {
         Score = transform.Find("Score").GetComponent<Text>();
@@ -33,9 +35,14 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PushRandomNews()
     {
-        yield return new WaitForSeconds(30);
+        yield return new WaitForSeconds(m_news_time);
         if(NewsEvent != null)
             NewsEvent();
         StartCoroutine(PushRandomNews());
+    }
+
+    public void PlayerDeath()
+    {
+        StopAllCoroutines();
     }
 }
