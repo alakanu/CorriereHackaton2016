@@ -34,26 +34,20 @@ public class Player : MonoBehaviour {
 
     private void AnimateCharacter()
     {
-        UpdateAnimator();
         FlipPlayer();
-        
+        UpdateAnimator();
     }
 
     private void FlipPlayer()
     {
         Vector3 temp = tr.localScale;
 
-        if (m_horizontal < 0 && looking_right)
-        {
-            looking_right = false;
+        if (m_horizontal < 0)
             temp = new Vector3(-1,1,1);
-        }
         
-        if(m_horizontal > 0 && !looking_right)
-        {
-            looking_right = true;
+        if(m_horizontal > 0 )
             temp = Vector3.one;
-        }
+
         tr.localScale = temp;
     }
 
