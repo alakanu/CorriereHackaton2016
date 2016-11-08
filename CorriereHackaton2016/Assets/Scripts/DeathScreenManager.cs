@@ -8,7 +8,6 @@ public class DeathScreenManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        m_deathScreen.SetActive(false);
         Player.PlayerDeath += ShowDeathScreen;
 	}
 	
@@ -19,11 +18,6 @@ public class DeathScreenManager : MonoBehaviour {
 
     void ShowDeathScreen()
     {
-        m_deathScreen.SetActive(true);
-    }
-
-    public void RestartScene(string scene_name)
-    {
-        SceneManager.LoadScene(scene_name);
+        Instantiate(m_deathScreen);
     }
 }
