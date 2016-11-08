@@ -18,4 +18,10 @@ public class GameManager : MonoBehaviour
     {
         Score.text = "" + Math.Round(Time.time,2);
     }
+
+    void PushRandomNews()
+    {
+        if(NewsEvent != null)
+            NewsEvent();
+    }
 }
