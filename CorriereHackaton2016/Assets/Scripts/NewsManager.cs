@@ -7,6 +7,8 @@ using System.Collections;
 public class NewsManager : MonoBehaviour {
 
     public Text m_newsField;
+    public GameObject m_newsBar;
+
     public List<string> m_textNews;
     public float m_displayTime = 10.0f;
     //public float m_speed = 1.0f;
@@ -16,7 +18,6 @@ public class NewsManager : MonoBehaviour {
     //Vector3 m_startPosition;
     //float m_change=0;
 
-    public GameObject m_newsBar;
 
 	// Use this for initialization
 	void Start ()
