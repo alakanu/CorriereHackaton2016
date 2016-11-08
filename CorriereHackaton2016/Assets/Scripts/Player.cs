@@ -23,10 +23,16 @@ public class Player : MonoBehaviour {
         tr = GetComponent<Transform>();
         m_rigid2d = gameObject.GetComponent<Rigidbody2D>();
         m_animator = GetComponent<Animator>();
+        GameManager.NewsEvent += TurnOnSurprised;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    void OnDestroy()
+    {
+        GameManager.NewsEvent -= TurnOnSurprised;
+    }
+
+    // Update is called once per frame
+    void Update () {
         m_horizontal = Input.GetAxis("Horizontal");
         m_vertical = Input.GetAxis("Vertical");
 
