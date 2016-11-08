@@ -50,4 +50,9 @@ public class DeathScreenManager : MonoBehaviour {
     {
         Application.Quit();
     }
+
+    public void OpenLink()
+    {
+        Application.OpenURL("http://www.corriere.it/salute/pediatria/cards/decalogo-antibufale-vaccini-societa-italiana-pediatria/i-vaccini-causano-l-autismo-falso.shtml");
+    }
 }
