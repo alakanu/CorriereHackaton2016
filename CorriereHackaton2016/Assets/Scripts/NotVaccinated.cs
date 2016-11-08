@@ -38,6 +38,7 @@ public class NotVaccinated : Vaccinated {
 
     IEnumerator DestroyOnDeath()
     {
+        SoundManager.Instance.PlayerDeath();
         yield return new WaitForSeconds(1);
         GameObject.Instantiate(m_death_pre, tr.position, Quaternion.identity);
         Destroy(gameObject);
