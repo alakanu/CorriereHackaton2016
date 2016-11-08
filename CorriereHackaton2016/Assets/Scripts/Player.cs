@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.Events;
 using System.Collections;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -11,9 +10,12 @@ public class Player : MonoBehaviour {
     Rigidbody2D m_rigid2d;
     Animator m_animator;
     Transform tr;
+    bool m_dying = false;
+
+    public delegate void OnPlayerDeath();
+    public static event OnPlayerDeath PlayerDeath;
 
     public float m_speed = 10f;
-    public UnityEvent m_onPlayerDeath;
 
 	// Use this for initialization
 	void Start ()
@@ -28,7 +30,8 @@ public class Player : MonoBehaviour {
         m_horizontal = Input.GetAxis("Horizontal");
         m_vertical = Input.GetAxis("Vertical");
 
-        AnimateCharacter();
+        if(!m_dying)
+            AnimateCharacter();
     }
 
     private void AnimateCharacter()
@@ -71,17 +74,21 @@ public class Player : MonoBehaviour {
 
     void FixedUpdate()
     {
-        m_rigid2d.velocity = tr.right * m_horizontal * m_speed
-                        + tr.up * m_vertical * m_speed;
+        if (!m_dying)
+            m_rigid2d.velocity = tr.right * m_horizontal * m_speed + tr.up * m_vertical * m_speed;
+        else
+            m_rigid2d.velocity = Vector3.zero;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            m_onPlayerDeath.Invoke();
             m_animator.SetBool("dying",true);
-            Debug.Log("Colpito");
+            m_dying = true;
+
+            if (PlayerDeath != null)
+                PlayerDeath();
         }
     }
 

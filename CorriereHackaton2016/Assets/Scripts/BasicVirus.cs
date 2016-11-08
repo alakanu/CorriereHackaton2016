@@ -14,8 +14,6 @@ public class BasicVirus : MonoBehaviour {
     protected Rigidbody2D rb2D;
 
     protected bool ready;
-
-    protected bool firstTouch;
     
     public virtual Vector3 Direction
     {
@@ -36,21 +34,13 @@ public class BasicVirus : MonoBehaviour {
         animator = GetComponent<Animator>();
         animator.runtimeAnimatorController = animCollection.Animators[Random.Range(0, animCollection.Animators.Length)];
         rb2D = GetComponent<Rigidbody2D>();
-        firstTouch = true;
     }
 
     protected void OnTriggerEnter2D(Collider2D other)
     {
         if (other.CompareTag("Border"))
         {
-            if(firstTouch)
-            {
-                firstTouch = false;
-            }
-            else
-            {
-                GameObject.Destroy(gameObject);
-            }
+            GameObject.Destroy(gameObject);
             
         }
     }
