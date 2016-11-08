@@ -23,7 +23,7 @@ public class Vaccinated : MonoBehaviour
         box2d = GetComponent<BoxCollider2D>() as BoxCollider2D;
     }
 
-    void OnEnable()
+    protected void OnEnable()
     {
         direction = RandomDir();
         SetAnimator();
@@ -78,16 +78,16 @@ public class Vaccinated : MonoBehaviour
 
     protected void OnCollisionEnter2D(Collision2D other)
     {
-        Debug.Log("Collision" + other.gameObject.name);
+        //Debug.Log("Collision" + other.gameObject.name);
         if (other.collider.CompareTag("Player") || other.collider.CompareTag("Border") )
         {
             Bounce();
         }
     }
 
-    void OnTriggerEnter2D(Collider2D other)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        Debug.Log("Trigger" + other.gameObject.name);
+        //Debug.Log("Trigger" + other.gameObject.name);
         if (other.CompareTag("Border") )
         {
             Bounce();
