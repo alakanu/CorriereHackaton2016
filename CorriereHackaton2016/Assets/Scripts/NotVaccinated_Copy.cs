@@ -1,19 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Vaccinated : MonoBehaviour
+public class NotVaccinated_Copy : MonoBehaviour
 {
 
-    public int m_min_move_timer = 1;
-    public int m_max_move_timer = 5;
+    const int min_move_timer = 1;
+    const int max_move_timer = 5;
 
-    protected Transform tr;
-    protected Animator anim;
-    protected Rigidbody2D rigid2d;
-    protected BoxCollider2D box2d;
+    Transform tr;
+    Animator anim;
+    Rigidbody2D rigid2d;
+    BoxCollider2D box2d;
 
     public float m_speed = 20f;
-    protected Vector3 direction;
+    Vector3 direction;
+
+    // Use this for initialization
 
     void Awake()
     {
@@ -21,6 +23,11 @@ public class Vaccinated : MonoBehaviour
         anim = GetComponent<Animator>() as Animator;
         rigid2d = GetComponent<Rigidbody2D>() as Rigidbody2D;
         box2d = GetComponent<BoxCollider2D>() as BoxCollider2D;
+    }
+
+    void Start()
+    {
+
     }
 
     void OnEnable()
@@ -32,7 +39,7 @@ public class Vaccinated : MonoBehaviour
 
     IEnumerator ChangeDirection()
     {
-        yield return new WaitForSeconds(Random.Range(m_min_move_timer, m_max_move_timer));
+        yield return new WaitForSeconds(Random.Range(min_move_timer, max_move_timer));
         direction = RandomDir();
         SetAnimator();
         StartCoroutine(ChangeDirection());
@@ -67,7 +74,7 @@ public class Vaccinated : MonoBehaviour
         return d;
     }
 
-    protected void Bounce()
+    void Bounce()
     {
         direction.x = -1 * direction.x;
         direction.y = -1 * direction.y;
@@ -76,19 +83,28 @@ public class Vaccinated : MonoBehaviour
         StartCoroutine(ChangeDirection());
     }
 
-    protected void OnCollisionEnter2D(Collision2D other)
+    void OnCollisionEnter2D(Collision2D other)
     {
         Debug.Log("Collision" + other.gameObject.name);
-        if (other.collider.CompareTag("Player") || other.collider.CompareTag("Border") )
+        if (other.collider.CompareTag("Player") || other.collider.CompareTag("Border" ))
         {
             Bounce();
+        }
+        if (other.collider.CompareTag("Enemy"))
+        {
+            StopAllCoroutines();
+            direction = new Vector3(0, 0, 0);
+            anim.SetInteger("Direction", 0);
+            anim.SetBool("Death", true);
+            box2d.enabled = false;
+            StartCoroutine(DestroyOnDeath());
         }
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
         Debug.Log("Trigger" + other.gameObject.name);
-        if (other.CompareTag("Border") )
+        if (other.CompareTag("Border"))
         {
             Bounce();
         }
@@ -116,5 +132,11 @@ public class Vaccinated : MonoBehaviour
         }
     }
 
+    IEnumerator DestroyOnDeath()
+    {
+        yield return new WaitForSeconds(2);
+        Destroy(gameObject);
+    }
 
 }
+
