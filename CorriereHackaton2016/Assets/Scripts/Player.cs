@@ -11,7 +11,6 @@ public class Player : MonoBehaviour {
     Rigidbody2D m_rigid2d;
     Animator m_animator;
     Transform tr;
-    bool looking_right = false;
 
     public float m_speed = 10f;
     public UnityEvent m_onPlayerDeath;
@@ -93,7 +92,7 @@ public class Player : MonoBehaviour {
     }
 
     IEnumerator TurnOffSurprised()
-    {
+    {      
         yield return new WaitForSeconds(0.5f);
         m_animator.SetBool("surprised",false);
     }
