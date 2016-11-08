@@ -13,7 +13,7 @@ public class BasicVirus : MonoBehaviour {
 
     protected bool firstTouch;
     
-    public Vector3 Direction
+    public virtual Vector3 Direction
     {
         get
         {
@@ -53,7 +53,12 @@ public class BasicVirus : MonoBehaviour {
     {
         if (ready)
         {
-            rb2D.MovePosition(transform.position + direction * Speed * Time.fixedDeltaTime);
+            Move();
         }
+    }
+
+    protected virtual void Move()
+    {
+        rb2D.MovePosition(transform.position + direction * Speed * Time.fixedDeltaTime);
     }
 }

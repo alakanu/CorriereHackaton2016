@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 using System;
 
 public class GameManager : MonoBehaviour
 {
     protected Text Score;
+
+    public delegate void OnNewsEvent();
+    public static event OnNewsEvent NewsEvent;
 
     void Start()
     {
