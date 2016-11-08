@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Score = transform.Find("Score").GetComponent<Text>();
+        Percentage = transform.Find("Percentage").GetComponent<Text>();
         StartCoroutine(PushRandomNews());
         Player.PlayerDeath += ResetTime;
         time = 0;
