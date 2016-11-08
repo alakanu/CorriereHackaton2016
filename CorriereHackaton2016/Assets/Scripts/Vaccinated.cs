@@ -49,20 +49,20 @@ public class Vaccinated : MonoBehaviour
         {
             case 1:
                 d = new Vector3(1, 0, 0);
+                anim.SetInteger("Direction", 2);
                 break;
-            //an.SetInteger("Direction", 2);
             case 2:
                 d = new Vector3(-1, 0, 0);
+                anim.SetInteger("Direction", 4);
                 break;
-            //an.SetInteger("Direction", 4);
             case 3:
                 d = new Vector3(0, 1, 0);
+                anim.SetInteger("Direction", 1);
                 break;
-            //an.SetInteger("Direction", 1);
             case 4:
                 d = new Vector3(0, -1, 0);
+                anim.SetInteger("Direction", 3);
                 break;
-            //an.SetInteger("Direction", 3);
         }
         return d;
     }
