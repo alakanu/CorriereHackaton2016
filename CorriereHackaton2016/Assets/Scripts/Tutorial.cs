@@ -4,10 +4,11 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class Tutorial : MonoBehaviour {
-
+    
     public Sprite One;
     public Sprite Two;
     public Sprite Three;
+    public Sprite Four;
 
     protected int count;
 
@@ -25,7 +26,7 @@ public class Tutorial : MonoBehaviour {
         if(Input.GetButtonDown("Submit"))
         {
             count++;
-            if (count == 3)
+            if (count == 4)
             {
                 SceneManager.LoadScene(1);
             }
@@ -36,6 +37,9 @@ public class Tutorial : MonoBehaviour {
                     break;
                 case 2:
                     img.sprite = Three;
+                    break;
+                case 3:
+                    img.sprite = Four;
                     break;
             }
             
