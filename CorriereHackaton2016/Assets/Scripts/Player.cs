@@ -90,11 +90,11 @@ public class Player : MonoBehaviour {
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            if (PlayerDeath != null && !m_dying)
+                PlayerDeath();
+
             m_animator.SetBool("dying",true);
             m_dying = true;
-
-            if (PlayerDeath != null)
-                PlayerDeath();
         }
     }
 
